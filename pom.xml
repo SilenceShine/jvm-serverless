@@ -5,19 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <packaging>pom</packaging>
-    <modules>
-        <module>serverless-server</module>
-    </modules>
 
     <artifactId>jvm-serverless</artifactId>
     <groupId>io.github.SilenceShine</groupId>
     <version>${revision}</version>
-    <name>${artifactId}</name>
+
+    <name>${project.artifactId}</name>
     <description>jvm-serverless</description>
     <url>https://github.com/SilenceShine/shine-framework.git</url>
 
     <properties>
-        <revision>0.3.2-SNAPSHOT</revision>
+        <revision>0.0.1-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
@@ -32,16 +30,8 @@
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <maven-repository-github-plugin.version>0.0.1</maven-repository-github-plugin.version>
 
-        <!--    util    -->
-        <reactor-core.version>3.5.3</reactor-core.version>
-        <mutiny.version>2.1.0</mutiny.version>
-        <slf4j-api.version>2.0.6</slf4j-api.version>
-        <hutool.version>5.8.12</hutool.version>
-        <jackson.version>2.14.1</jackson.version>
-        <oshi.version>6.4.0</oshi.version>
-        <snakeyaml.version>2.0</snakeyaml.version>
-        <mybatis-plus.version>3.5.3</mybatis-plus.version>
-        <lombok.version>1.18.26</lombok.version>
+        <shine-framework.version>0.4.2</shine-framework.version>
+
     </properties>
 
     <developers>
@@ -54,61 +44,35 @@
         </developer>
     </developers>
 
-    <dependencyManagement>
-        <dependencies>
-
-        </dependencies>
-    </dependencyManagement>
-
     <repositories>
         <repository>
-            <id>io.github.SilenceShine</id>
+            <id>SilenceShine maven-repository release</id>
             <url>https://raw.githubusercontent.com/SilenceShine/maven-repository/release</url>
         </repository>
     </repositories>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.SilenceShine</groupId>
+                <artifactId>shine-framework-spring</artifactId>
+                <version>${shine-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <dependency>
-            <groupId>io.github.SilenceShine</groupId>
-            <artifactId>maven-repository-github-plugin</artifactId>
-            <version>0.0.1</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>io.github.SilenceShine</id>
-            <url>https://maven.pkg.github.com/SilenceShine/shine-framework</url>
-        </repository>
-    </distributionManagement>
-
-    <profiles>
-        <profile>
-            <id>github</id>
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>https://repo1.maven.org/maven2</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>io.github.SilenceShine</id>
-                    <name>SilenceShine shine-framework Maven Packages</name>
-                    <url>https://maven.pkg.github.com/SilenceShine/shine-framework</url>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
+    <modules>
+        <module>serverless-server</module>
+    </modules>
 
     <build>
         <pluginManagement>
@@ -161,27 +125,7 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin> <plugin>
-                <groupId>io.github.SilenceShine</groupId>
-                <artifactId>maven-repository-github-plugin</artifactId>
-                <version>${maven-repository-github-plugin.version}</version>
-                <configuration>
-                    <id>io.github.SilenceShine</id>
-                    <owner>SilenceShine</owner>
-                    <repository>maven-repository</repository>
-                    <branchRelease>release</branchRelease>
-                    <branchSnapshot>snapshot</branchSnapshot>
-                    <message>init maven-repository-github-plugin 0.0.1</message>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>github</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>

@@ -1,0 +1,7 @@
+server:
+  port: 80
+
+# 定时任务
+serverless:
+  timer: "*/10 * * * * ?"
+
