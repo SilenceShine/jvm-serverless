@@ -6,8 +6,8 @@
 
     <packaging>pom</packaging>
 
-    <artifactId>jvm-serverless</artifactId>
     <groupId>io.github.SilenceShine</groupId>
+    <artifactId>jvm-serverless</artifactId>
     <version>${revision}</version>
 
     <name>${project.artifactId}</name>
@@ -60,6 +60,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.github.SilenceShine</groupId>
+                <artifactId>serverless-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -71,7 +76,9 @@
     </dependencies>
 
     <modules>
+        <module>serverless-common</module>
         <module>serverless-server</module>
+        <module>serverless-demo</module>
     </modules>
 
     <build>

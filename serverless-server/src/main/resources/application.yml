@@ -3,5 +3,13 @@ server:
 
 # 定时任务
 serverless:
-  timer: "*/10 * * * * ?"
+  timer: "*/2 * * * * ?"
+  spaces:
+    default:
+      libs: D:\\workspace\\GitHub\\SilenceShine\\jvm-serverless\\lib
+      functions: D:\\workspace\\GitHub\\SilenceShine\\jvm-serverless\\serverless-demo\\src\\main\\java
+
+logging:
+  level:
+    io.github.SilenceShine.jvm.serverless: debug
 

@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author SilenceShine
  * @github <a href="https://github.com/SilenceShine">SilenceShine</a>
@@ -16,6 +19,6 @@ public class GlobalProperties {
 
     private String timer = "0/5 * * * * ?";
 
-    private String jarPath = "D:\\workspace\\GitHub\\SilenceShine\\jvm-serverless\\lib";
+    private Map<String, SpaceProperties> spaces = new HashMap<>();
 
 }
