@@ -13,6 +13,10 @@ public class ServerlessClassLoader extends JarClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
+        Class<?> aClass = super.findClass(name);
+        if (null != aClass) {
+            return aClass;
+        }
         byte[] bytes = IoUtil.readBytes(FileUtil.getInputStream(name), true);
         if (null != bytes) {
             return defineClass(null, bytes, 0, bytes.length);
